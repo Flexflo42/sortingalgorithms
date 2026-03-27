@@ -2,17 +2,18 @@ import random
 import math
 import time
 
-# good luck
+# list definition
 intList = [4, 12, 102, 44, 2, 98, 67, 42]
 n = len(intList)
 
-def calculateChance(k):
+# function that calculates the chance of success within a number of attempts, given by the user
+def calculateChance(k, n):
     k = int(k)
-    x = len(intList)
-    factorial = math.factorial(x)
-    chance = 1 - (1 - x/factorial)**k
+    factorial = math.factorial(n)
+    chance = 1 - (1 - 1/factorial)**k
     return chance
 
+# algorithm that randomizes the elements in a list till they are sorted
 def bogosort(intList):
     attempts = 0
     while True:
@@ -24,9 +25,9 @@ def bogosort(intList):
         print(f"Everday I'm shuffling #{attempts}: {intList}")
 
 userGuess = input(f"How many attempts do you think will a list with {n} Elements take? : ")
-chance = calculateChance(userGuess)
+chance = calculateChance(userGuess, n)
 print(f"the chance of this being a success is {chance}")
-time.sleep(10)
+time.sleep(1)
 print("LETS ROLL")
 
 sorted_list, attempts = bogosort(intList)
